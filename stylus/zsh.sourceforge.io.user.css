@@ -5,7 +5,7 @@
 @description    A Dark Mode Theme for the Zsh Website (zsh.sourceforge.io)
 @author         rrrix [https://github.com/rrrix]
 @homepageURL 	https://github.com/rrrix/usercss
-@updateURL      https://github.com/rrrix/usercss/stylus/zsh.sourceforge.io.user.css
+@updateURL      https://github.com/rrrix/usercss/raw/main/stylus/zsh.sourceforge.io.user.css
 @license 	    Apache-2.0
 @preprocessor less
 @var color  text-color "Primary text color" #f90
