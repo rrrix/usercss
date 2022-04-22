@@ -1,0 +1,372 @@
+/* ==UserStyle==
+@name           zsh.sourceforge.io - Zsh Website Dark Mode
+@namespace      github.com/rrrix/usercss
+@version        1.0.0
+@description    A Dark Mode Theme for the Zsh Website (zsh.sourceforge.io)
+@author         rrrix [https://github.com/rrrix]
+@homepageURL 	  https://github.com/rrrix/usercss
+@updateURL      https://github.com/rrrix/usercss/stylus/zsh.sourceforge.io.user.css
+@license 			  Apache-2.0
+@preprocessor less
+@var <type> <name>   <label>        <default value>
+@var text   myBorder "Border style" 3px dotted blue
+@var color  text-color "Primary text color" #f90
+@var color  text-term-color "Optional Token Indicator color (e.g. [, ] and ...)" #bbb
+@var color  text-var-color "Color of Code/Program Variables"    #dd0
+@var color  text-code-color "Color of Keywords and Commands"    #0dd
+@var color  hr-color "Horizontal Rule (Line) Color"    #c60
+@var color  bgcolor "Primary Background color"    black
+@var color  link-color "Hyperlink Color"    #3d3
+@var color  link-decoration-color "Hyperlink Decorator Color"    #090
+@var color  font-family "Global Font Family Definition"    'Fira Code', 'Fira Code Mono', 'Roboto Mono', monospace
+@var color  text-line-height "Global Default Text Line Height"    1.5em
+@var color  definition-border-color "Vertical/Left Border color to indicate continuity of specific code definitions"    #ffffff40
+@var color  code-border-color "Command/Keyword/Code border color"    #ff800040
+@var color  code-background-color "Command/Keyword/Code background color"    #22222280
+==/UserStyle== */
+@-moz-document domain("zsh.sourceforge.io") {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-color: #f90;
+      --text-term-color: #bbb;
+      --text-var-color: #dd0;
+      --text-code-color: #0dd;
+      --hr-color: #c60;
+      --bgcolor: black;
+      --link-color: #3d3;
+      --link-decoration-color: #090;
+      --font-family: 'Fira Code', 'Fira Code Mono', 'Roboto Mono', monospace;
+      --text-line-height: 1.5em;
+      --definition-border-color: #ffffff40;
+      --code-border-color: #ff800040;
+      --code-background-color: #22222280;
+    }
+
+    /*
+        Zsh Defaults
+    */
+    a.summary-letter {
+      text-decoration: none
+    }
+
+    blockquote.smallquotation {
+      font-size: smaller
+    }
+
+    div.display {
+      margin-left: 3.2em
+    }
+
+    div.example {
+      /* margin-left: 3.2em */
+      margin-left: 0 !important;
+    }
+
+    div.lisp {
+      margin-left: 3.2em
+    }
+
+    div.smalldisplay {
+      margin-left: 3.2em
+    }
+
+    div.smallexample {
+      margin-left: 3.2em
+    }
+
+    div.smalllisp {
+      margin-left: 3.2em
+    }
+
+    pre.display {
+      font-family: serif
+    }
+
+    pre.format {
+      font-family: serif
+    }
+
+    pre.menu-comment {
+      font-family: serif
+    }
+
+    pre.menu-preformatted {
+      font-family: serif
+    }
+
+    pre.smalldisplay {
+      font-family: serif;
+      font-size: smaller
+    }
+
+    pre.smallexample {
+      font-size: smaller
+    }
+
+    pre.smallformat {
+      font-family: serif;
+      font-size: smaller
+    }
+
+    pre.smalllisp {
+      font-size: smaller
+    }
+
+    span.nocodebreak {
+      white-space: pre
+    }
+
+    span.nolinebreak {
+      white-space: pre
+    }
+
+    span.roman {
+      font-family: serif;
+      font-weight: normal
+    }
+
+    span.sansserif {
+      font-family: sans-serif;
+      font-weight: normal
+    }
+
+    ul.no-bullet {
+      list-style: none
+    }
+
+    /*
+      End Zsh Defaults
+    */
+    /*
+      Define Fancy Pants styles for Lists and Man Page Items and code definitions
+
+        <dl>   = Description List.  CSS: display: block; margin: 1em 0;
+        <dt>   = Description List Term.  CSS: display: block
+        <dd>   = Description List Definition CSS: display: block; margin-left: 40px;
+        <var>  = Programming or Mathematical Variable. CSS: Italic.
+        <code> = Source Code. CSS: Monospace.
+        <tt>   = Teletype Text. Deprecated. CSS: Monospace.
+  */
+    dd > ul {
+      list-style-type: disclosure-closed;
+      list-style-type: none !important;
+    }
+
+    dd > ul > li::before {
+      content: " \00BB ";
+      color: var(--text-var-color);
+      border-color: var(--text-var-color);
+      font-size: 1.3em;
+      font-weight: bold;
+      border-width: 0;
+      border-left-width: 1px;
+      border-right-width: 0;
+      border-style: dashed;
+      padding: 4px;
+      border-radius: 1em;
+    }
+
+    dd > ul > li {
+      padding-left: 1em;
+      margin: 0.5em 0;
+    }
+
+    dl,
+    dd > ul {
+      border-left-color: var(--definition-border-color);
+      border-left-width: 1px;
+      border-left-style: solid;
+      padding-left: 1em;
+      border-radius: .5em;
+    }
+
+    /* Text surrounding keywords and variables (usually "[",  "]" and "...") */
+    dl > dt {
+      color: var(--text-term-color);
+    }
+
+    /* Keywords and Commands */
+    tt,
+    pre,
+    code {
+      color: var(--text-code-color);
+    }
+
+    /* Variables */
+    var {
+      color: var(--text-var-color);
+    }
+
+    /* Commands, Keywords, Functions and Variables  */
+    p > tt,
+    p > var,
+    pre,
+    code {
+      border: 1px solid;
+      border-color: var(--code-border-color);
+      padding: 0.1em;
+      background-color: var(--code-background-color);
+      white-space: pre;
+    }
+
+    /* Keywords, Functions, Variables in description/paragraph text */
+    p > tt,
+    p > var {
+      border-radius: 0.25em;
+    }
+
+    /* Code Examples */
+    pre.example {
+      padding: 0.5em;
+      border-radius: 0.5em;
+    }
+
+    /* Global Font Family */
+    * {
+      font-family: var(--font-family) !important;
+    }
+
+    /* Color / Background Defaults */
+    body {
+      color: var(--text-color) !important;
+      background-color: var(--bgcolor) !important;
+    }
+
+    /* Base Font Sizes */
+    html,
+    body {
+      font-size: 1em !important;
+      line-height: var(--text-line-height);
+    }
+
+    p {
+      font-size: 1em !important;
+    }
+
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 1.17em;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: .83em;
+      font-weight: bold;
+    }
+
+    h5 {
+      font-size: .83em;
+      font-weight: bold;
+    }
+
+    h6 {
+      font-size: .67em;
+      font-weight: bold;
+    }
+
+    a:any-link {
+      text-decoration: none !important;
+
+    }
+
+    a.summary-letter {
+      color: var(--link-color);
+    }
+
+
+    /* table:is(.header, .menu) a[href]:any-link, */
+    table.index-tp > tbody > tr > td:last-of-type > a:any-link,
+    a {
+      color: var(--link-color) !important;
+      text-decoration: none !important;
+      border-bottom-color: var(--link-decoration-color);
+      border-bottom-width: 1px;
+      border-bottom-style: dashed;
+      padding-bottom: 0.1em;
+    }
+
+    /*
+    table:is(.header, .menu, .index-tp) a[href]:any-link, a.summary-letter {
+        color: var(--link-color);
+        text-decoration: none !important;
+        border-bottom-color: var(--link-decoration-color);
+        border-bottom-width: 1px;
+        border-bottom-style: dashed;
+        padding-bottom: 0.1em;
+
+    }
+    */
+    /* */
+    /*
+    table.index-tp:nth-col(1) a {
+        border: 0 !important;
+    }
+    */
+    /* Inject a fancy arrow on links */
+    :is(p, div) a[href]::after {
+      content: "\2197";
+      font-size: 0.75em !important;
+      position: absolute;
+      line-height: 1em;
+    }
+
+    /* Menu and Table of Contents Links */
+    table:is(.index-tp, .menu) a,
+    div.contents ul > li > a {
+      line-height: 1.75em;
+    }
+
+    /* Hide stupid empty header cells */
+    table.header > tbody > tr > td:nth-of-type(6),
+    table.header > tbody > tr > td:nth-of-type(7),
+    table.header > tbody > tr > td:nth-of-type(8),
+    table.header > tbody > tr > td:nth-of-type(9) {
+      display: none !important;
+    }
+
+    /* Make [ and ] text in header a little less annoying */
+    table.header > tbody > tr > td {
+      color: #333;
+    }
+
+    /* Woah, the 90's called and want their <hr /> elements back! */
+    hr {
+      border-collapse: collapse;
+      border-width: 0;
+      border-bottom-width: 0.1px;
+      border-bottom-color: var(--hr-color);
+    }
+
+    /* Make it a little more readable on larger screens */
+    @media screen and (min-width: 1000px) {
+      body {
+        margin: auto !important;
+        max-width: 80% !important;
+      }
+
+      table.header > tbody > tr > td > a {
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      dd > ul {
+        max-width: 80%;
+        margin: auto;
+      }
+
+      pre.example {
+        margin: auto;
+        max-width: 80%;
+      }
+    }
+  }
+}
