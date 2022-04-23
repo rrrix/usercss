@@ -1,11 +1,11 @@
 /* ==UserStyle==
 @name           zsh.sourceforge.io - Zsh Website Dark Mode
 @namespace      github.com/rrrix/usercss
-@version        1.0.1
+@version        1.1.0
 @description    A Dark Mode Theme for the Zsh Website (zsh.sourceforge.io)
 @author         rrrix [https://github.com/rrrix]
 @homepageURL 	https://github.com/rrrix/usercss
-@updateURL      https://github.com/rrrix/usercss/raw/main/stylus/zsh.sourceforge.io.user.css
+@updateURL      https://github.com/rrrix/usercss/stylus/zsh.sourceforge.io.user.css
 @license 	    Apache-2.0
 @preprocessor less
 @var color  text-color "Primary text color" #f90
@@ -19,14 +19,15 @@
 @var color  definition-border-color "Vertical/Left Border color to indicate continuity of specific code definitions"    #ffffff40
 @var color  code-border-color "Command/Keyword/Code border color"    #ff800040
 @var color  code-background-color "Command/Keyword/Code background color"    #22222280
+@var color  list-item-bullet-color "Color of list item bullets" #6f6
 @var text  text-line-height "Global Default Text Line Height"    1.5em
 @var text  font-family "Global Font Family Definition"    'Fira Code', 'Roboto Mono', 'Noto Mono', Consolas, monospace
 ==/UserStyle== */
 @-moz-document domain("zsh.sourceforge.io") {
-  @media (prefers-color-scheme: dark) {
+  @media screen and (prefers-color-scheme: dark) {
     /*
-      Zsh Defaults
-    */
+  Zsh Defaults
+*/
     a.summary-letter {
       text-decoration: none
     }
@@ -117,27 +118,34 @@
     }
 
     /*
-      End Zsh Defaults
-    */
+  End Zsh Defaults
+*/
     /*
-      Define Fancy Pants styles for Lists and Man Page Items and code definitions
+    Yuck
+    */
+    font[color="#600000"] {
+      color: @text-color !important;
+    }
 
-        <dl>   = Description List.  CSS: display: block; margin: 1em 0;
-        <dt>   = Description List Term.  CSS: display: block
-        <dd>   = Description List Definition CSS: display: block; margin-left: 40px;
-        <var>  = Programming or Mathematical Variable. CSS: Italic.
-        <code> = Source Code. CSS: Monospace.
-        <tt>   = Teletype Text. Deprecated. CSS: Monospace.
-  */
-    dd > ul {
+    /*
+  Define Fancy Pants styles for Lists and Man Page Items and code definitions
+
+    <dl>   = Description List.  CSS: display: block; margin: 1em 0;
+    <dt>   = Description List Term.  CSS: display: block
+    <dd>   = Description List Definition CSS: display: block; margin-left: 40px;
+    <var>  = Programming or Mathematical Variable. CSS: Italic.
+    <code> = Source Code. CSS: Monospace.
+    <tt>   = Teletype Text. Deprecated. CSS: Monospace.
+*/
+    ul {
       list-style-type: disclosure-closed;
       list-style-type: none !important;
     }
 
-    dd > ul > li::before {
+    ul > li::before {
       content: " \00BB ";
-      color: @text-var-color;
-      border-color: @text-var-color;
+      color: @list-item-bullet-color;
+      border-color: @list-item-bullet-color;
       font-size: 1.3em;
       font-weight: bold;
       border-width: 0;
@@ -257,17 +265,18 @@
 
     a:any-link {
       text-decoration: none !important;
-
+      color: inherit;
     }
 
-    a.summary-letter {
-      color: @link-color;
-    }
-
-
-    /* table:is(.header, .menu) a[href]:any-link, */
+    table:is(.header, .menu) a[href]:any-link,
+    table:not(.index-tp) a,
     table.index-tp > tbody > tr > td:last-of-type > a:any-link,
-    a {
+    a.summary-letter,
+    div.contents a,
+    body > ul a,
+    body > p a,
+    address > a,
+    body > dl a {
       color: @link-color !important;
       text-decoration: none !important;
       border-bottom-color: @link-decoration-color;
@@ -276,23 +285,6 @@
       padding-bottom: 0.1em;
     }
 
-    /*
-    table:is(.header, .menu, .index-tp) a[href]:any-link, a.summary-letter {
-        color: @link-color;
-        text-decoration: none !important;
-        border-bottom-color: @link-decoration-color;
-        border-bottom-width: 1px;
-        border-bottom-style: dashed;
-        padding-bottom: 0.1em;
-
-    }
-    */
-    /* */
-    /*
-    table.index-tp:nth-col(1) a {
-        border: 0 !important;
-    }
-    */
     /* Inject a fancy arrow on links */
     :is(p, div) a[href]::after {
       content: "\2197";
@@ -329,9 +321,26 @@
     }
 
     /* Make it a little more readable on larger screens */
-    @media screen and (min-width: 1000px) {
+    @media (min-width: 900px) {
       body {
         margin: auto !important;
+      }
+    }
+
+    @media (min-width: 900px) and (max-width: 1200px) {
+      body {
+        max-width: 90% !important;
+      }
+    }
+
+    @media (min-width: 1200px) and (max-width: 1600px) {
+      body {
+        max-width: 85% !important;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      body {
         max-width: 80% !important;
       }
 
@@ -350,5 +359,40 @@
         max-width: 80%;
       }
     }
+  }
+}
+
+@-moz-document url-prefix("https://zsh.sourceforge.io/Doc/Release/Editor-Functions-Index.html") {
+  @media (max-width: 1300px) {
+    body > table:nth-of-type(2) > tbody > tr > td {
+      font-size: xx-small;
+    }
+  }
+}
+
+@-moz-document url(https://zsh.sourceforge.io/) {
+  body > center:nth-child(4) > table {
+    font-size: 1rem;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+  }
+  body > center:nth-child(4) > table ul {
+    margin-block-start: 0px;
+    padding-inline-start: 0px;
+    list-style-position: inside;
+    padding: 5px;
+  }
+  /* Zsh homepage */
+  li > a {
+    line-height: 2em;
+    white-space: break-spaces;
+  }
+  a:any-link {
+    color: @link-color !important;
+    text-decoration: none !important;
+    border-bottom-color: @link-decoration-color;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    padding-bottom: 0.1em;
   }
 }
