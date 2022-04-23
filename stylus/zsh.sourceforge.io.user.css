@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name           zsh.sourceforge.io - Zsh Website Dark Mode
 @namespace      github.com/rrrix/usercss
-@version        1.1.0
+@version        1.1.1
 @description    A Dark Mode Theme for the Zsh Website (zsh.sourceforge.io)
 @author         rrrix [https://github.com/rrrix]
-@homepageURL 	https://github.com/rrrix/usercss
-@updateURL      https://github.com/rrrix/usercss/stylus/zsh.sourceforge.io.user.css
-@license 	    Apache-2.0
+@updateURL      https://github.com/rrrix/usercss/raw/main/stylus/zsh.sourceforge.io.user.css
+@homepageURL    https://github.com/rrrix/usercss/blob/main/stylus/zsh.sourceforge.io.user.css
+@license        Apache-2.0
 @preprocessor less
 @var color  text-color "Primary text color" #f90
 @var color  text-term-color "Optional Token Indicator color (e.g. [, ] and ...)" #bbb
@@ -26,8 +26,8 @@
 @-moz-document domain("zsh.sourceforge.io") {
   @media screen and (prefers-color-scheme: dark) {
     /*
-  Zsh Defaults
-*/
+      Zsh Defaults
+    */
     a.summary-letter {
       text-decoration: none
     }
@@ -79,7 +79,7 @@
 
     pre.smalldisplay {
       font-family: serif;
-      font-size: smaller
+      font-size:   smaller
     }
 
     pre.smallexample {
@@ -88,7 +88,7 @@
 
     pre.smallformat {
       font-family: serif;
-      font-size: smaller
+      font-size:   smaller
     }
 
     pre.smalllisp {
@@ -143,22 +143,22 @@
     }
 
     ul > li::before {
-      content: " \00BB ";
-      color: @list-item-bullet-color;
-      border-color: @list-item-bullet-color;
-      font-size: 1.3em;
-      font-weight: bold;
-      border-width: 0;
-      border-left-width: 1px;
+      content:            " \00BB ";
+      color:              @list-item-bullet-color;
+      border-color:       @list-item-bullet-color;
+      font-size:          1.3em;
+      font-weight:        bold;
+      border-width:       0;
+      border-left-width:  1px;
       border-right-width: 0;
-      border-style: dashed;
-      padding: 4px;
-      border-radius: 1em;
+      border-style:       dashed;
+      padding:            4px;
+      border-radius:      1em;
     }
 
     dd > ul > li {
       padding-left: 1em;
-      margin: 0.5em 0;
+      margin:       0.5em 0;
     }
 
     dl,
@@ -166,8 +166,8 @@
       border-left-color: @definition-border-color;
       border-left-width: 1px;
       border-left-style: solid;
-      padding-left: 1em;
-      border-radius: .5em;
+      padding-left:      1em;
+      border-radius:     .5em;
     }
 
     /* Text surrounding keywords and variables (usually "[",  "]" and "...") */
@@ -192,11 +192,11 @@
     p > var,
     pre,
     code {
-      border: 1px solid;
-      border-color: @code-border-color;
-      padding: 0.1em;
+      border:           1px solid;
+      border-color:     @code-border-color;
+      padding:          0.1em;
       background-color: @code-background-color;
-      white-space: pre;
+      white-space:      pre;
     }
 
     /* Keywords, Functions, Variables in description/paragraph text */
@@ -207,7 +207,7 @@
 
     /* Code Examples */
     pre.example {
-      padding: 0.5em;
+      padding:       0.5em;
       border-radius: 0.5em;
     }
 
@@ -218,14 +218,14 @@
 
     /* Color / Background Defaults */
     body {
-      color: @text-color !important;
+      color:            @text-color !important;
       background-color: @bgcolor !important;
     }
 
     /* Base Font Sizes */
     html,
     body {
-      font-size: 1em !important;
+      font-size:   1em !important;
       line-height: @text-line-height;
     }
 
@@ -234,38 +234,38 @@
     }
 
     h1 {
-      font-size: 2em;
+      font-size:   2em;
       font-weight: bold;
     }
 
     h2 {
-      font-size: 1.5em;
+      font-size:   1.5em;
       font-weight: bold;
     }
 
     h3 {
-      font-size: 1.17em;
+      font-size:   1.17em;
       font-weight: bold;
     }
 
     h4 {
-      font-size: .83em;
+      font-size:   .83em;
       font-weight: bold;
     }
 
     h5 {
-      font-size: .83em;
+      font-size:   .83em;
       font-weight: bold;
     }
 
     h6 {
-      font-size: .67em;
+      font-size:   .67em;
       font-weight: bold;
     }
 
     a:any-link {
       text-decoration: none !important;
-      color: inherit;
+      color:           inherit;
     }
 
     table:is(.header, .menu) a[href]:any-link,
@@ -277,19 +277,19 @@
     body > p a,
     address > a,
     body > dl a {
-      color: @link-color !important;
-      text-decoration: none !important;
+      color:               @link-color !important;
+      text-decoration:     none !important;
       border-bottom-color: @link-decoration-color;
       border-bottom-width: 1px;
       border-bottom-style: dashed;
-      padding-bottom: 0.1em;
+      padding-bottom:      0.1em;
     }
 
     /* Inject a fancy arrow on links */
     :is(p, div) a[href]::after {
-      content: "\2197";
-      font-size: 0.75em !important;
-      position: absolute;
+      content:     "\2197";
+      font-size:   0.75em !important;
+      position:    absolute;
       line-height: 1em;
     }
 
@@ -314,8 +314,8 @@
 
     /* Woah, the 90's called and want their <hr /> elements back! */
     hr {
-      border-collapse: collapse;
-      border-width: 0;
+      border-collapse:     collapse;
+      border-width:        0;
       border-bottom-width: 0.1px;
       border-bottom-color: @hr-color;
     }
@@ -345,17 +345,17 @@
       }
 
       table.header > tbody > tr > td > a {
-        margin-left: 1em;
+        margin-left:  1em;
         margin-right: 1em;
       }
 
       dd > ul {
         max-width: 80%;
-        margin: auto;
+        margin:    auto;
       }
 
       pre.example {
-        margin: auto;
+        margin:    auto;
         max-width: 80%;
       }
     }
@@ -372,15 +372,15 @@
 
 @-moz-document url(https://zsh.sourceforge.io/) {
   body > center:nth-child(4) > table {
-    font-size: 1rem;
+    font-size:                         1rem;
     -webkit-border-horizontal-spacing: 0px;
-    -webkit-border-vertical-spacing: 0px;
+    -webkit-border-vertical-spacing:   0px;
   }
   body > center:nth-child(4) > table ul {
-    margin-block-start: 0px;
+    margin-block-start:   0px;
     padding-inline-start: 0px;
-    list-style-position: inside;
-    padding: 5px;
+    list-style-position:  inside;
+    padding:              5px;
   }
   /* Zsh homepage */
   li > a {
@@ -388,11 +388,11 @@
     white-space: break-spaces;
   }
   a:any-link {
-    color: @link-color !important;
-    text-decoration: none !important;
+    color:               @link-color !important;
+    text-decoration:     none !important;
     border-bottom-color: @link-decoration-color;
     border-bottom-width: 1px;
     border-bottom-style: dashed;
-    padding-bottom: 0.1em;
+    padding-bottom:      0.1em;
   }
 }
